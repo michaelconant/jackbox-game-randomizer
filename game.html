@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="./">
+    <title>Jackbox Picker - Game Info</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="topnav">
+		<a href="">Home</a>
+		<a href="randomizer">Randomizer</a>
+		<a href="catalog/packs">Packs</a>
+        <a href="catalog/games">Games</a>
+	</div>
+    
+	<script type="module" src="./scripts/game-info.js"></script>
+
+	<div class="content">
+		<div class="banner">
+			<img id="game-splash">
+			<img id="game-logo">
+		</div>
+	
+		<div class="details">
+			<h1 id="game-name"></h1>
+			<p id="game-description"></p>
+	
+			<table>
+				<tr>
+					<td>Release Date</td>
+					<td id="game-releasedate"></td>
+				</tr>
+				<tr>
+					<td>Player Count</td>
+					<td id="game-players"></td>
+				</tr>
+				<tr>
+					<td>Duration</td>
+					<td id="game-duration"></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+    <footer>
+        This website is not affiliated with Jackbox Games.
+    </footer>
+</body>
+</html>

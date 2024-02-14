@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<base href="./">
+    <title>Jackbox Picker - Games</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <div class="topnav">
+		<a href="../">Home</a>
+		<a href="../randomizer">Randomizer</a>
+		<a href="../catalog/packs">Packs</a>
+        <a class="active">Games</a>
+	</div>
+
+	<script type="module" src="../scripts/fill-catalog.js" list-type="game"></script>
+    
+	<div class="grid-container" id="games-container"></div>
+
+    <footer>
+        This website is not affiliated with Jackbox Games.
+    </footer>
+</body>
+</html>
