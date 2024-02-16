@@ -87,7 +87,6 @@ img {
 .grid-container > a > img {
 	width: 30vmin;
 	max-width: 100%;
-	max-height: 30vmin;
 
 	@media screen and (max-width: 720px) {
 		width: 100%;
@@ -115,7 +114,6 @@ img {
 }
 
 .game > .overlay, .pack > .overlay {
-	/* border-radius: 1.85vmin; */
 	border-radius: 1.85vmin;
 }
 
@@ -127,9 +125,6 @@ img {
 }
 
 .grid-container > a:hover > .overlay {
-	/* background: rgba(0, 0, 0, 0) linear-gradient(to bottom, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, .1) 40%, rgba(0, 0, 0, .5) 75%, rgba(0, 0, 0, 1) 100%) repeat scroll 0 0; */
-	/* background: rgba(0, 0, 0, 0) linear-gradient(to bottom, rgba(0, 0, 0, 0) 5%, rgba(0, 0, 0, .1) 10%, rgba(0, 0, 0, .5) 30%, rgba(0, 0, 0, 1) 75%) repeat scroll 0 0; */
-	/* background: rgba(0, 0, 0, 0) linear-gradient(to bottom, rgba(0, 0, 0, 0) 5%, rgba(0, 0, 0, .1) 10%, rgba(0, 0, 0, .5) 30%, rgba(0, 0, 0, 1) 75%) repeat scroll 0 0; */
 	background: rgb(0, 0, 0, 0.8);
 	transition: background 250ms;
 }

@@ -1,1 +1,5 @@
 .vscode/
+_site
+Notes
+Gemfile
+Gemfile.lock

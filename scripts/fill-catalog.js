@@ -1,26 +1,33 @@
 import * as db from "./db-functions.js"
 import { formatURL } from "./string-manip.js";
 
-//console.log(document.getElementsByTagName('script')[0].hasAttribute('list-type'));
-//console.log(document.getElementsByTagName('script')[0].getAttribute('list-type').toLowerCase());
-
 let type;
-switch(document.getElementsByTagName('script')[0].getAttribute('list-type').toLowerCase()) {
-	case "pack":
-	case "packs":
-		type = "pack"
-		break;
-	case "game":
-	case "games":
-	default:
-		type = "game"
+
+if (document.getElementById('list-script').hasAttribute('list-type')) {
+	switch (document.getElementById('list-script').getAttribute('list-type').toLowerCase()) {
+		case "pack":
+		case "packs":
+			type = "pack"
+			break;
+		case "game":
+		case "games":
+		default:
+			type = "game"
+			break;
+	}
+} else {
+	type = "game";
 }
 
-//List Using Images
-let result = await db.query(`SELECT Name, ListImg FROM ${type}s`);
-console.log(`SELECT Name, ListImg FROM ${type}s`);
-console.log(result);
-result = db.sortByName(result);
+let columns;
+if (type === 'game') {
+	columns = ', PlayersMin, PlayersMax, DurationMin, DurationMax';
+} else {
+	columns = '';
+}
+
+let result = await db.query(`SELECT Name, ReleaseDate, ListImg${columns} FROM ${type}s ORDER BY ReleaseDate DESC`);
+
 result.forEach((entry) => {
 	var newContainer = document.createElement('a');
 	newContainer.href = `../${type}?name=${formatURL(entry.Name)}`;
