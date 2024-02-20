@@ -20,6 +20,16 @@
 
     <input type="text" placeholder="Search..." id="search-bar">
 
+	<form>
+		<label for="sort">Sort by:</label>
+		<select name="sort" id="sort-select">
+			<option value="nameASC">Alphabetical (A to Z)</option>
+			<option value="nameDESC">Alphabetical (Z to A)</option>
+			<option value="releaseDESC">Release Date (Newest to Oldest)</option>
+			<option value="releaseASC">Release Date (Oldest to Newest)</option>
+		</select>
+	</form>
+
 	<script type="module" src="../scripts/fill-catalog.js" id=list-script list-type="game"></script>
     
 	<div class="grid-container" id="games-container"></div>

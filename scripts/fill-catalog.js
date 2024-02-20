@@ -38,9 +38,38 @@ async function getList() {
 		search += `WHERE Name LIKE '%${document.getElementById("search-bar").value}%' `;
 	}
 
-	search += `ORDER BY ReleaseDate DESC`;
+	//determine what sort order should be used in sql statement
+	let sortType;
+	if (document.getElementById("sort-select")) {
+		sortType = document.getElementById("sort-select").value;
+	} else {
+		sortType = null;
+	}
 
-	return await db.query(search);
+	switch(sortType) {
+		case "releaseASC":
+			search += `ORDER BY ReleaseDate ASC`;
+			break;
+		case "releaseDESC":
+		default:
+			search += `ORDER BY ReleaseDate DESC`;
+			break;
+	}
+
+	//get search result fromm database
+	let result = await db.query(search);
+
+	//sort by name if the user chose to
+		//this is not done in sql because sql-httpvfs seems to not support REGEX and regex is used to sort the names (removing the "The" at the begining for example)
+	if (sortType != null && sortType.includes("name")) {
+		result = db.sortByName(result);
+		if (sortType == "nameDESC") {
+			console.log("reverse");
+			result = result.reverse();
+		}
+	}
+
+	return result;
 }
 
 async function fillList(result) {
@@ -66,7 +95,9 @@ async function fillList(result) {
 	});
 }
 
-async function updateList() {
+//update the list of games by clearing the list and refilling the list
+export async function updateList() {
+	//the result is retrieved from the database before clearing the list in order to minimize the time the list is empty
 	let result = await getList();
 	clearList();
 	fillList(result);
@@ -76,4 +107,8 @@ updateList();
 
 if (document.getElementById("search-bar") !== null) {
 	document.getElementById("search-bar").oninput = updateList;
+}
+
+if (document.getElementById("sort-select") !== null) {
+	document.getElementById("sort-select").onchange = updateList;
 }
